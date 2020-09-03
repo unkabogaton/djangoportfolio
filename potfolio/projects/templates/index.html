@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    {% for p in projects %}
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img-top" src="{{ p.image.url }}" alt="Card image cap">
+        <div class="card-body">
+        <h4> {{ p.title }}</h4>
+          <p class="card-text">{{ p.description }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a href="{% url 'proj_detail' p.id %}">
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+            </a>
+            </div>
+            <small class="text-muted">{{ p.role }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
